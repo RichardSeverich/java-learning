@@ -1,0 +1,38 @@
+plugins {
+  id 'org.springframework.boot' version '2.1.6.RELEASE'
+  id 'io.spring.dependency-management'  version '1.0.8.RELEASE'
+  id 'java'
+  id 'checkstyle'
+}
+
+group = 'com.todo'
+//version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  //compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.3.4.RELEASE'
+  //compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
+  compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+  compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+  compileOnly 'org.projectlombok:lombok:1.18.12'
+  annotationProcessor 'org.projectlombok:lombok:1.18.12'
+  testCompileOnly 'org.projectlombok:lombok:1.18.12'
+  testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+  testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
+}
+
+test {
+  useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion = '7.7'
+    configFile = file("${rootProject.rootDir}/checkstyle/google_checks.xml")
+}
