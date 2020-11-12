@@ -35,22 +35,22 @@ public class ControllerTask {
 
   @RequestMapping(method = RequestMethod.GET, value = "/api/v1/tasks/{id}")
   public ResponseEntity<Task> readById(final @PathVariable Integer id) {
-    Task emptytask = new Task();
+    Task task = new Task();
     if (id >= TaskList.taskArrayList.size()) {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(emptytask);
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(task);
     }
-    emptytask = TaskList.taskArrayList.get(id);
-    return ResponseEntity.status(HttpStatus.OK).body(emptytask);
+    task = TaskList.taskArrayList.get(id);
+    return ResponseEntity.status(HttpStatus.OK).body(task);
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/api/v1/tasks")
-  public ResponseEntity<String> create(final @RequestBody Task task) {
+  public ResponseEntity<String> create(final @RequestBody @Valid Task task) {
     TaskList.taskArrayList.add(task);
     return ResponseEntity.status(HttpStatus.OK).body("operation successfully");
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/api/v1/tasks/{id}")
-  public ResponseEntity<String> edit(final @RequestBody Task task, final @PathVariable Integer id) {
+  public ResponseEntity<String> edit(final @RequestBody @Valid Task task, final @PathVariable Integer id) {
     if (id >= TaskList.taskArrayList.size()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("operation not completed");
       }

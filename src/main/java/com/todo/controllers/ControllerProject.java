@@ -1,13 +1,11 @@
 package com.todo.controllers;
 
 //import com.todo.services.ServiceGet;
-
-import javax.validation.Valid;
-
 import com.todo.repository.ProjectList;
-import java.util.List;
-
 import com.todo.models.Project;
+
+import java.util.List;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControllerProject {
 
 
-  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/project")
+  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/projects")
   public ResponseEntity<List> read() {
     return ResponseEntity.status(HttpStatus.OK).body(ProjectList.projectArrayList);
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/project{id}")
+  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/projects/{id}")
   public ResponseEntity<Project> readById(final @PathVariable int id) {
     Project project = new Project();
     if (id >= ProjectList.projectArrayList.size()) {
@@ -38,14 +36,14 @@ public class ControllerProject {
     return ResponseEntity.status(HttpStatus.OK).body(project);
   }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/api/v1/project")
-  public ResponseEntity<String> create(final @RequestBody Project project ) {
+  @RequestMapping(method = RequestMethod.POST, value = "/api/v1/projects")
+  public ResponseEntity<String> create(final @RequestBody @Valid Project project ) {
     ProjectList.projectArrayList.add(project);
     return ResponseEntity.status(HttpStatus.OK).body("creation successfully");
   }
 
-  @RequestMapping(method = RequestMethod.PUT, value = "/api/v1/project/{id}")
-  public ResponseEntity<String> edit(final @RequestBody Project project, final @PathVariable Integer id) {
+  @RequestMapping(method = RequestMethod.PUT, value = "/api/v1/projects/{id}")
+  public ResponseEntity<String> edit(final @RequestBody @Valid Project project, final @PathVariable Integer id) {
     if (id >= ProjectList.projectArrayList.size()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("operation not completed");
       }
@@ -53,7 +51,7 @@ public class ControllerProject {
       return ResponseEntity.status(HttpStatus.OK).body("operation successfully");
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/api/v1/project/{id}")
+  @RequestMapping(method = RequestMethod.DELETE, value = "/api/v1/projects/{id}")
   public ResponseEntity<String> delete(final @PathVariable int id) {
     if (id >= ProjectList.projectArrayList.size()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("operation not completed");

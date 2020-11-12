@@ -34,7 +34,7 @@ public class ControllerStories {
     return ResponseEntity.status(HttpStatus.OK).body(UserStoriesList.storiesArrayList);
   }
 
-  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/stories{id}")
+  @RequestMapping(method = RequestMethod.GET, value = "/api/v1/stories/{id}")
   public ResponseEntity<UserStories> readById(final @PathVariable int id) {
     UserStories story = new UserStories();
     if (id >= UserStoriesList.storiesArrayList.size()) {
@@ -45,13 +45,13 @@ public class ControllerStories {
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/api/v1/stories")
-  public ResponseEntity<String> create(final @RequestBody UserStories storie ) {
+  public ResponseEntity<String> create(final @RequestBody @Valid UserStories storie ) {
     UserStoriesList.storiesArrayList.add(storie);
     return ResponseEntity.status(HttpStatus.OK).body("creation successfully");
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/api/v1/stories/{id}")
-  public ResponseEntity<String> edit(final @RequestBody UserStories storie, final @PathVariable Integer id) {
+  public ResponseEntity<String> edit(final @RequestBody @Valid UserStories storie, final @PathVariable Integer id) {
     if (id >= UserStoriesList.storiesArrayList.size()) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("operation not completed");
       }

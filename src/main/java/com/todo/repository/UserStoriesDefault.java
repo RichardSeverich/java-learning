@@ -12,16 +12,20 @@ public class UserStoriesDefault {
     storie.name = "Modulo de usuarios";
     storie.status = "todo";
     UserStoriesList.storiesArrayList.add(storie);
+    ProjectList.projectArrayList.get(0).storiesList.add(storie);
+    ProjectList.projectArrayList.get(1).storiesList.add(storie);
 
     UserStories storie1 = new UserStories();
-    storie1.name = "Modulo de reportes";
-    storie1.status = "inProgres";
+    storie1.name = "Modulo de ventas";
+    storie1.status = "finished";
     UserStoriesList.storiesArrayList.add(storie1);
+    ProjectList.projectArrayList.get(0).storiesList.add(storie1);
 
     UserStories storie2 = new UserStories();
-    storie2.name = "Modulo de compras";
-    storie2.status = "finished";
+    storie2.name = "Modulo de productos";
+    storie2.status = "todo";
     UserStoriesList.storiesArrayList.add(storie2);
+    ProjectList.projectArrayList.get(1).storiesList.add(storie2);
 
     UserStories storie3 = new UserStories();
     storie3.name = "Modulo de analisis";
@@ -29,8 +33,8 @@ public class UserStoriesDefault {
     UserStoriesList.storiesArrayList.add(storie3);
 
     UserStories storie4 = new UserStories();
-    storie4.name = "Modulo de ventas";
-    storie4.status = "finished";
+    storie4.name = "Modulo de reportes";
+    storie4.status = "inProgres";
     UserStoriesList.storiesArrayList.add(storie4);
 
     UserStories storie5 = new UserStories();
@@ -39,8 +43,8 @@ public class UserStoriesDefault {
     UserStoriesList.storiesArrayList.add(storie5);
 
     UserStories storie6 = new UserStories();
-    storie6.name = "Modulo de productos";
-    storie6.status = "todo";
+    storie6.name = "Modulo de compras";
+    storie6.status = "finished";
     UserStoriesList.storiesArrayList.add(storie6);
 
     UserStories storie7 = new UserStories();

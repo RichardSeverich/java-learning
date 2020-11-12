@@ -44,13 +44,13 @@ public class ControllerUser {
   }
 
   @RequestMapping(method = RequestMethod.POST, value = "/api/v1/users")
-  public ResponseEntity<String> create(final @RequestBody User user) {
+  public ResponseEntity<String> create(final @RequestBody @Valid User user) {
     UsersList.usersArrayList.add(user);
     return ResponseEntity.status(HttpStatus.CREATED).body("operation successfully");
   }
 
   @RequestMapping(method = RequestMethod.PUT, value = "/api/v1/users/{id}")
-  public ResponseEntity<String> edit(final @RequestBody User user, final @PathVariable Integer id) {
+  public ResponseEntity<String> edit(final @RequestBody @Valid User user, final @PathVariable Integer id) {
     if (id >= UsersList.usersArrayList.size()){
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("operation not completed");
     }
