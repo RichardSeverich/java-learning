@@ -121,7 +121,6 @@ DELETE localhost:8080/api/v1/stories/{id}
   "name": "Modulo de usuarios",
   "status": "todo"
 }
-```
 
 {
   "name": "Modulo de usuarios",
@@ -160,7 +159,6 @@ DELETE localhost:8080/api/v1/projects/{id}
   "name": "Sistema de ventas.",
   "status": "todo"
 }
-```
 
 {
   "name": "Sistema de ventas.",
